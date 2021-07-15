@@ -1,10 +1,11 @@
  <%= render "books/list",book:@book,user:@user %>
 
  <h1>Books</h1>
- <table>
-   
+ 
+ <table class="table table-hover table-border table-inverse">
+
    <thead>
-    <tr height="100">
+    <tr>
     <th></th>
     <th>Title</th>
     <th>Opinion</th>
@@ -12,17 +13,18 @@
     </tr>
    </thead>
    
-      <% @books.each do |book|%>
+ <% @books.each do |book|%>
 <tbody>
+ 
  <tr height="50">
      <td width=150><%= attachment_image_tag book.user, :profile_image_id, :fill,30,30,fallback: "no_image.jpg",size: "30x30" %></td>
      <td width=200><%= link_to book.title,book_path(book.id) %></td>
      <td width=500><%= book.body %></td>
-
  </tr>
+ 
 </tbody>
   <% end %>
 </table>
-
-</div>
+   </div>
+ </div>
 </div>

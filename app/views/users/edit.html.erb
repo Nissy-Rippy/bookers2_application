@@ -12,18 +12,20 @@
 
 
 
-    <%= form_with model:@user,local:true do |f| %>
+  <%= form_with model:@user,local:true do |f| %>
 
+  <div class="form_group pt-4 pb-3">
     <p class="box-title">Name</p>
-    <%= f.text_field :name %>
+    <%= f.text_field :name ,class: "form-control" %>
     <%= f.attachment_field :profile_image %>
     <p class="box-title">Introduction</p>
-    <%= f.text_area :introduction %>
+    <%= f.text_area :introductio,class: "form-control" %>
     <div class="submit-box">
-
+  </div>
     <%= f.submit "Update User",class: "btn btn-secondary" %>
     </div>
-    <% end %>
+
+  <% end %>
 
 
   </div>
