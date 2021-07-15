@@ -1,0 +1,50 @@
+<div class="container px-5">
+ <div class="row">
+   <div class="col-md-3">
+     
+     <h2>User info</h2>
+   <%= attachment_image_tag @book.user,:profile_image_id ,:fill,60,60 %>
+<table class="table">
+  <tbody>
+    <tr></tr>
+  <tr>
+	  <th>name</th>
+	  <th><%=current_user.name%></th>
+  </tr>
+  <tr>
+	  <th>introduction</th>
+	  <th><%= current_user.introduction %></th>
+  </tr>
+ </tbody>
+  </table>
+<div class="row">
+  <%= link_to edit_user_path(@book.user) do %>
+  <a class="btn btn-outline-secondary btn-block fas fa-user-cog"></a>
+  <% end %>
+</div>
+
+<div class="new-heading"><h2>New Book</h2></div>
+
+  <% if @book.errors.any? %>
+  <%= @book.errors.count %>件のerrorが発生しました</br>
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %></br>
+  <% end %>
+  <% end %>
+  
+ <div class="box">
+   
+    <%= form_with model:@book,local:true do |f| %>
+    <p class="box-title">Title</p>
+    <%= f.text_field :title %>
+    <p class="box-title">Opinion</p>
+    <%= f.text_area :body %>
+  <div class="submit-box">
+    <%= f.submit "Create Book"%>
+  </div>
+  <% end %>
+ 
+ </div>
+</div>
+
+<div class="col-md-8 offset-md-1">
