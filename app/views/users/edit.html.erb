@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-  		<h1>Editing Book</h1>
+  		<h1>User info</h1>
 
   <% if @user.errors.any? %>
   <%= @user.errors.count %>件のerrorが発生しました</br>
@@ -14,19 +14,20 @@
 
   <%= form_with model:@user,local:true do |f| %>
 
-  <div class="form_group pt-4 pb-3">
-    <p class="box-title">Name</p>
-    <%= f.text_field :name ,class: "form-control" %>
+  <div class="form_group pt-4 pb-5">
+    <p class="box-title pb-1">Name</p>
+    <%= f.text_field :name ,class: "form-control pb-1" %>
+    <p class="box-title pt-1 pb-1">image</p>
     <%= f.attachment_field :profile_image %>
-    <p class="box-title">Introduction</p>
-    <%= f.text_area :introductio,class: "form-control" %>
+    <p class="box-title pt-1 pb-1">Introduction</p>
+    <%= f.text_area :introduction,class: "form-control pb-1" %>
     <div class="submit-box">
   </div>
     <%= f.submit "Update User",class: "btn btn-secondary" %>
     </div>
 
   <% end %>
-
+   </div>
 
   </div>
  </div>

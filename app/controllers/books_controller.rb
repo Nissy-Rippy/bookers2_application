@@ -10,10 +10,12 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)#インデックスより送られてきsた空のインスタンスに変数を加える
     @book.user_id = current_user.id
+    @user = current_user
     if @book.save
       redirect_to(book_path(@book.id))
       flash[:notice] = "Book was successfully created."#フラッシュ表示のためのコード
     else
+      @books = Book.all
       render :index#レンダーにより直接インデックスアクションにアクセスする。そのままの状態で
     end
   end
@@ -21,7 +23,7 @@ class BooksController < ApplicationController
   def show
       @book_new = Book.new
       @book = Book.find(params[:id])#データベースよ取り込む
-      @user = current_user
+      @user = @book.user
   end
 
   def edit

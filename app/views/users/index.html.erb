@@ -1,9 +1,9 @@
 <%= render "books/list",user:@user,book:@book %>
 
+<div class="col-md-8 offset-md-1">
 
  <h1>Users</h1>
  <table class="table table-hover table-border table-inverse">
-  
    <thead>
     <tr>
     <th>Image</th>
@@ -13,15 +13,15 @@
    </thead>
       <% @users.each do |user|%>
    <tbody>
-       <tr height="50">
-           <td width="200"><%= attachment_image_tag user,:profile_image,:fill,30,30,format: "jpg", fallback: "no_image.jpg", size:"30x30" %></td>
-           <td width="400"><%= user.name %></td>
-           <td><%= link_to "Show",user_path(user.id) %></td>
-       </tr>
+     <tr height="50">
+      <td width="200"><%= attachment_image_tag user,:profile_image,:fill,30,30,format: "jpg", fallback: "no_image.jpg", size:"30x30" %></td>
+      <td width="400"><%= user.name %></td>
+      <td><%= link_to "Show",user_path(user.id) %></td>
+     </tr>
    </tbody>
      <% end %>
-     
 </table>
-</div>
-</div>
+
+  </div>
+ </div>
 </dic>
