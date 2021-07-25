@@ -5,6 +5,12 @@ Rails.application.routes.draw do
 
   get "/home/about" => "homes#about"
 
-  resources :books,only:[:new,:index,:edit,:show,:destroy,:update,:create]#ブックスに必要なルーティン
-  resources :users,only:[:index,:show,:edit,:update]#新しくつくないといけないルーティン
+   resources :books,only:[:new,:index,:edit,:show,:destroy,:update,:create] do
+    resources :post_coments,only:[:create,:destroy]
+        resource :favorites,only:[:create,:destroy]
+
+    end
+    #ブックスに必要なルーティン
+   resources :users,only:[:index,:show,:edit,:update]#新しくつくないといけないルーティン
+
 end

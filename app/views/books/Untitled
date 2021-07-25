@@ -1,0 +1,20 @@
+     <td>  
+     <% if book.favorited_by?(current_user) %>
+    <p>
+      <%= link_to book_favorites_path(book.id), method: :delete do %>
+       <i class="fas fa-heart",d-inline ></i><%= book.favorites.count %>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to book_favorites_path(book.id), method: :post do %>
+         <i class="far fa-heart",d-inline,style="color:red;"></i><%= book.favorites.count %>
+      <% end %>
+    </p>
+  <% end %>
+</td>
+
+
+これはインデックスの部分テンプレ
+
+    @book_fa = Book.find(params[:id])
