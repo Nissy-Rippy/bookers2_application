@@ -24,9 +24,9 @@ class BooksController < ApplicationController
       @book_new = Book.new# 部分テンプレートのcreate機能を利用するため
       @book = Book.find(params[:id])#データベースよ取り込む
       @user = @book.user#ここでのユーザーとは、本のタイトル感想を投稿したユーザということ
-      @post_coment = Post_coment.new
+      @post_coment = PostComent.new
   end
-  
+
 
   def edit
       @book = Book.find(params[:id])#データベースよりどの本なのかを特定する、インスタンス変数
@@ -58,6 +58,6 @@ private
   def book_params          #strongぱらーめたー外部よりいじられないようにする
   params.require(:book).permit(:title,:body)  #データベースにデータを書き込む
   end
-  
+
 
 end

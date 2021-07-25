@@ -1,13 +1,9 @@
-
 <%= render "books/list",book:@book_new,user:@user %>
 <div class="col-md-8 offset-md-1">
-
 <h1>Book detail</h1>
  <table class="table table-hover">
-
   	<tbody>
   		    <tr>
-  		     
           <td>
              <%= link_to user_path(@book.user_id) do %>
              <%= attachment_image_tag(@book.user,:profile_image,:fill,40,40,fallback: "no_image.jpg",size:"40x40" ) %> </br><%= @book.user.name %>
@@ -37,33 +33,32 @@
           <td class="h6">コメント数:<%= @book.post_coments.count %></td>
              <% end %>
         </tr>
-        
-        <tr>
-              <% @post_coments.book.each do |post_coment| %>
+
+        <% @book.post_coments.each do |post_coment| %>
+       <tr>
           <td>
               <%= link_to user_path(post_coment.user) do %>
-              <%= attachment_image_tag(post_coment.user,:profile_image,:fill,40,40,fallback: "no_image.jpg",size:"40x40" ) %> </br><%= post_coment.name %>
+              <%= attachment_image_tag post_coment.user,:profile_image,:fill,40,40,fallback: "no_image.jpg",size:"40x40" %> </br><%= post_coment.user.name %>
               <% end %>
           </td>
-          <td><% post_coment.comment %></td>
+          <td><%= post_coment.comment %></td>
           <td><% if post_coment.user == current_user %>
-              <%= link_to "削除",book_post_coment(post_coment.user),method: :delete,"data-confirm" => "本当に消しますか？",class: "btn btn-danger" %>
+              <%= link_to "削除",book_post_coment_path(post_coment.book,post_coment),method: :delete,"data-confirm" => "本当に消しますか？",class: "btn btn-danger" %>
               <% end %>
           </td>
         </tr>
+       <% end %>
+
 
       </tbody>
      </table>
-     
       <div class="form-group">
-       <%= form_with(model:[@post_coments,@book],local:true) do |f| %>
+       <%= form_with(model:[@book, @post_coment],local:true) do |f| %>
        <label>text</label>
-       <%= f.text_area :comment,class: "form-control " %>
+       <%= f.text_area :comment,class: "form-control" %>
        <%= f.submit "送信" %>
        <% end %>
       </div>
-
-
    </div>
   </div>
 </div>
