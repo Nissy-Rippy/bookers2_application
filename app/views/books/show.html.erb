@@ -41,7 +41,7 @@
               <%= attachment_image_tag post_coment.user,:profile_image,:fill,40,40,fallback: "no_image.jpg",size:"40x40" %> </br><%= post_coment.user.name %>
               <% end %>
           </td>
-          <td><%= post_coment.comment %></td>
+          <td><% post_coment.comment %></td>
           <td><% if post_coment.user == current_user %>
               <%= link_to "削除",book_post_coment_path(post_coment.book,post_coment),method: :delete,"data-confirm" => "本当に消しますか？",class: "btn btn-danger" %>
               <% end %>

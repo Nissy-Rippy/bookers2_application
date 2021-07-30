@@ -35,9 +35,8 @@ class BooksController < ApplicationController
       end
   end
 
-
   def update
-      @book = Book.find(params[:id])
+       @book = Book.find(params[:id])
     if @book.update(book_params)#条件分岐により成功した場合と違う場合に条件を変える
        redirect_to(book_path(@book.id))#成功したら本の一覧ページに戻るはず
        flash[:notice] = "Book was successfully updated."#成功メッセージの際に表示
