@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       flash[:notice] = "User info was successfully updated."
     else
       render :edit
-    end
+   end
   end
 
   def edit
