@@ -1,1 +1,2 @@
 $(".coment").html("<%= j(render partial: "post_coments/list",locals: {book: @book}) %>");
+$(.coment-count<%= @book.id %>).html("コメント数: <%= @book.book_comments.count %>");
