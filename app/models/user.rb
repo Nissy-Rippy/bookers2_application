@@ -1,7 +1,6 @@
 class User < ApplicationRecord
       
       def self.search(search,word)
-            
             if search == "forward_match"
                   @user = User.where("name LIKE?","#{word}%")
             elsif search == "backword_match"
@@ -28,8 +27,8 @@ class User < ApplicationRecord
       def followings?(user)
             followings.include?(user)
       end
-
-
+      has_many :group_users,dependent: :destroy
+      has_many :messages,dependent: :destroy
       has_many :books,dependent: :destroy
       has_many :favorites,dependent: :destroy
       has_many :post_coments,dependent: :destroy 

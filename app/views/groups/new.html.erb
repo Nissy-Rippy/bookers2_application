@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+       <h1 class="mb-5">Group Create</h1>
+               
+    <%= form_with model:@group ,local:true do |f| %>
+       <div class="form-group">
+       <p class="group-title">グループ名</p>
+       <%= f.text_field :name ,class: "form-control" %>
+       <p class="group-title">グループ紹介文</p>
+       <%= f.text_area :introduction,class: "form-control" %>
+       <%= f.attachment_field :image %>
+       <div>
+       <%= f.submit "Create Group",class: "btn btn-success" %>
+    <% end %>
+       
+    </div>
+  </div>
+</div>
